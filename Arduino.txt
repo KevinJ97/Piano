@@ -1,11 +1,11 @@
-int inputPin1 = 2;
-int inputPin2 = 4;
-int inputPin3 = 6;
-int speakerPin = 7;
+int Pin1 = 2; //Sets Pin#2
+int Pin2 = 4; 
+int Pin3 = 6;
+int speakerPin = 7; //Sets #7 as speaker output pin
 int val = 0;
 
 int length = 1; // the number of notes
-char notes[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' }; // a space represents a rest
+char notes[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' }; 
 int beats[] = { 1 };
 int tempo = 300;
 
@@ -32,17 +32,17 @@ void playNote(char note, int duration) {
 
 void setup() {
   pinMode(speakerPin, OUTPUT);
-  pinMode(inputPin1, INPUT);
-  pinMode(inputPin2, INPUT);
-  pinMode(inputPin3, INPUT);
+  pinMode(Pin1, INPUT);
+  pinMode(Pin2, INPUT);
+  pinMode(Pin3, INPUT);
 }
 
 void loop() {
-  if (digitalRead(inputPin1) == LOW) {
+  if (digitalRead(Pin1) == LOW) {
     playNote(notes[0], 300);
-  } else if (digitalRead(inputPin2) == LOW) {
+  } else if (digitalRead(Pin2) == LOW) {
     playNote(notes[1], 300);
-  } else if (digitalRead(inputPin3) == LOW) {
+  } else if (digitalRead(Pin3) == LOW) {
     playNote(notes[2], 300);
   } else {
     digitalWrite(speakerPin, LOW);
