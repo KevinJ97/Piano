@@ -1,42 +1,50 @@
-def genGraph(dictionary):
-	graph = default(list)	dictSet = set(dictionary)
-	lowercase = LOWERCASECONST string.lowercase????	//Set?? 	For word in dictSet:	# delete		for i in range(len(word))):
-			delete = word[:i] + word[i+1:]
-			if delete not in graph[word] and delete in dictSet: (ends if statement)
-			graph[word].append(delete)
-				# change 
-		for i in range(len(word))):
-			for letter in lowercase:
-			change = word[:i] + word[i+1:]
-			if change  not in graph[word]: (ends if statement)
-			graph[word].append(change) //append is pushback.
-			
-	# add		for i in range(len(word) + 1)):
-			for letter in lowercase:
-			add = word[:i] + word[i+1:]
-			if add  not in graph[word]: (ends if statement)
-			graph[word].append(add) //append is pushback.
-		return graph
+int inputPin1 = 2;
+int inputPin2 = 4;
+int inputPin3 = 6;
+int speakerPin = 7;
+int val = 0;
 
-cat -> bat
-cat
-bat 
-mat
-tat
-sat
+int length = 1; // the number of notes
+char notes[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' }; // a space represents a rest
+int beats[] = { 1 };
+int tempo = 300;
 
+void playTone(int tone, int duration) {
+  for (long i = 0; i < duration * 1000L; i += tone * 2) {
+    digitalWrite(speakerPin, HIGH);
+    delayMicroseconds(tone);
+    digitalWrite(speakerPin, LOW);
+    delayMicroseconds(tone);
+  }
+}
 
-def findShortestPath(graph, start, end):
-	paths = [ [start] ]
-	visitedNodes = set()
+void playNote(char note, int duration) {
+  char names[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' };
+  int tones[] = { 1915, 1700, 1519, 1432, 1275, 1136, 1014, 956 };
+  
+  // play the tone corresponding to the note name
+  for (int i = 0; i < 8; i++) {
+    if (names[i] == note) {
+      playTone(tones[i], duration);
+    }
+  }
+}
 
-	while (path):
-		currentPath = paths[0]
-		currentWord = currentPath[-1]
-		paths = path[1:] # pop
-		if currentWord == end
-			return currentPath
-		for word in graph[currentWord]:
-			if word not n visitedNodes: 
-				paths.append(currentPath + [word])
-			visitedNodes.add(word)
+void setup() {
+  pinMode(speakerPin, OUTPUT);
+  pinMode(inputPin1, INPUT);
+  pinMode(inputPin2, INPUT);
+  pinMode(inputPin3, INPUT);
+}
+
+void loop() {
+  if (digitalRead(inputPin1) == LOW) {
+    playNote(notes[0], 300);
+  } else if (digitalRead(inputPin2) == LOW) {
+    playNote(notes[1], 300);
+  } else if (digitalRead(inputPin3) == LOW) {
+    playNote(notes[2], 300);
+  } else {
+    digitalWrite(speakerPin, LOW);
+  }
+}
