@@ -1,0 +1,42 @@
+def genGraph(dictionary):
+	graph = default(list)	dictSet = set(dictionary)
+	lowercase = LOWERCASECONST string.lowercase????	//Set?? 	For word in dictSet:	# delete		for i in range(len(word))):
+			delete = word[:i] + word[i+1:]
+			if delete not in graph[word] and delete in dictSet: (ends if statement)
+			graph[word].append(delete)
+				# change 
+		for i in range(len(word))):
+			for letter in lowercase:
+			change = word[:i] + word[i+1:]
+			if change  not in graph[word]: (ends if statement)
+			graph[word].append(change) //append is pushback.
+			
+	# add		for i in range(len(word) + 1)):
+			for letter in lowercase:
+			add = word[:i] + word[i+1:]
+			if add  not in graph[word]: (ends if statement)
+			graph[word].append(add) //append is pushback.
+		return graph
+
+cat -> bat
+cat
+bat 
+mat
+tat
+sat
+
+
+def findShortestPath(graph, start, end):
+	paths = [ [start] ]
+	visitedNodes = set()
+
+	while (path):
+		currentPath = paths[0]
+		currentWord = currentPath[-1]
+		paths = path[1:] # pop
+		if currentWord == end
+			return currentPath
+		for word in graph[currentWord]:
+			if word not n visitedNodes: 
+				paths.append(currentPath + [word])
+			visitedNodes.add(word)
